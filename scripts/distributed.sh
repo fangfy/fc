@@ -55,7 +55,7 @@ SCHEDULER_ADDR=$SCHEDULER_NODE:$SCHEDULER_PORT
 n0ppn=$(( $ppn < $NCPUS-2 ? $ppn : $NCPUS-2 ))
 n0ppn=$(( $n0ppn > 0 ? $n0ppn : 1 ))
 
-pbsdsh -n 0 -- /bin/bash -c "${init_env}; dask-scheduler --port $SCHEDULER_PORT ${bokeh_opt}"&
+pbsdsh -n 0 -- /bin/bash -c "${init_env}; dask-scheduler-no-steal --port $SCHEDULER_PORT ${bokeh_opt}"&
 sleep 5s
 
 pbsdsh -n 0 -- /bin/bash -c "${init_env}; dask-worker $SCHEDULER_ADDR --nprocs ${n0ppn} --nthreads ${tpp}"&

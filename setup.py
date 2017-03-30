@@ -39,6 +39,7 @@ setup(name='fc',
       entry_points={
           'console_scripts': [
               'datacube-fc = fc.fc_app:fc_app',
+              'dask-scheduler-no-steal = fc.dask_scheduler_no_steal:go',
           ]
       },
       cmdclass={
